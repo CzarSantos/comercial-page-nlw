@@ -18,6 +18,11 @@
   --brand-beige: hsl(39, 100%, 97%);
   --brand-ligth: hsl(148, 23%, 89%);
   --nav-height: 7.2rem;
+  --bg-light: hsl(180, 14%, 97%);
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 html,body{
@@ -31,12 +36,15 @@ body{
   text-align: center;
 
   overflow: overlay;
+  background: var(--bg-light);
+ 
  
 }
 
+
+
 .wrapper{
-  width: 100vw;
-  max-width: 37.5rem;
+  width: 37.5rem;
   margin-inline:auto;
   padding-inline: 2.4rem;
 }
@@ -45,111 +53,49 @@ ul{
   list-style: none;
 }
 
-
-/* HEADER================================ */
-
-header{
-  margin-top: calc(4.1rem + var(--nav-height));
+img{
+  max-width: 100%;
 }
 
-header::before{
-  content: "";
-  width: 100%;
-  height: calc(95rem + var(--nav-height));
-  background: var(--primary-bg);
-  display: block;
-
-  position: absolute;
-  top:0;
-  left: 0;
-  z-index: -1;
+section{
+  padding-block: 10rem;
 }
 
-header img{
-  width: 26.4rem;/* mesmo tamanho da div em baixo*/
-  display: block;
-  /* object-position: 0 2rem; */
-  margin-inline: auto;
-}
-
-h4{
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  color: var(--primary-color);
+section header h4{
  
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.08rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    
+    margin-bottom: 1.6rem;
 }
-
-h1{
-  font-size: 3.4rem;
+section header h2{
+  font-size: 3rem;
+  line-height: 3.9rem;
   color: var(--headline);
-  line-height: 130%;
+  
  
-  margin: 2.4rem 0px 1.6rem 0px;
+}
+section header h1{
+ 
+    font-size: 3.4rem;
+    color: var(--headline);
+    line-height: 130%;
+   
+    margin: 2.4rem 0px 1.6rem 0px;
+ 
+  
 }
 
-p{
-  font-size: 1.8rem;
-  line-height: 130%;
+section .content p{
   font-weight: 400;
-  color: var(--paragraph);
-  margin-bottom: 3.2rem;
+font-size: 1.6rem;
+line-height: 150%;
+color: var(--paragraph);
 }
-
-header button{
-  background: var(--primary-color);
-
-  border: none;
-  margin: 0 auto 6rem auto;
-  border-radius: 4rem;
-
-  height: 6.2rem;
-  width: 26.3rem;
-
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  font-weight: 700;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
-
-  
- 
-}
- 
-
-.box{
-  width: 32.7rem;
-  padding-block: 4rem;
-
-  margin-inline: auto;
-  background: var(--brand-beige);
-  border: 1px solid var(--brand-ligth);
-  border-radius: .6rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6rem;
-}
-
-.box p{
-  margin: 0;
-  color: var(--primary-color);
-  line-height: 150%;
-  font-size: 1.6rem;
-  
-}
-
-.box h3{
- color: var(--headline);
- font-size: 4.8rem;
- line-height: 130%;
- margin-bottom: .4rem;
-}
-
 
 /* NAV================================ */
 
@@ -157,11 +103,11 @@ nav{
   display: flex;
   
   height:var(--nav-height);
-
+  width: 100vw;
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+ 
+  z-index: 100;
 }
 
 nav .wrapper{
@@ -171,13 +117,16 @@ nav .wrapper{
  
 }
 
+
+/* Quando tiver a classe scroll */
 nav.scroll{
   background: var(--primary-color);
-  width: 100vw;
+
+ 
 }
 
 
-nav.scroll svg:nth-child(1) path{
+nav.scroll .logo path{
   fill: #fff;
 }
 
@@ -194,6 +143,8 @@ nav button{
 
 /* MENU-expended================================ */
 
+
+/* quando tiver a classe .menu-expended*/
 body.menu-expended{
   overflow: hidden;
 }
@@ -201,7 +152,7 @@ body.menu-expended{
 
 /* para todo do primeiro nivel exceto */
 body.menu-expended > :not(nav){
-  display: none;
+  visibility: hidden;
 }
 
 
@@ -216,6 +167,9 @@ body.menu-expended .menu, body.menu-expended  .close-menu{
   visibility: visible;
 }
 
+.menu{
+  transform: translatex(100%); /* começa top 100% */
+}
 
 body.menu-expended .menu{
   position: fixed;
@@ -227,11 +181,13 @@ body.menu-expended .menu{
   height: 100vh;
 
   padding-top:var(--nav-height) ;
+
+  transition: transform 400ms;
+  transform: translatex(0); /* termina em top 0 */
+ 
 }
 
-body.menu-expended nav{
-  position: relative;
-}
+
 
 .menu ul:nth-child(1){
   display: flex;
@@ -289,4 +245,143 @@ body.menu-expended .logo path{
 
 body.menu-expended button path{
   stroke: #fff;
+}
+
+
+
+
+/* home================================ */
+
+#home{
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before{
+  content: "";
+  width: 100%;
+  height: calc(95rem + var(--nav-height));
+  background: var(--primary-bg);
+  display: block;
+
+  position: absolute;
+  top:0;
+  left: 0;
+  z-index: -1;
+}
+
+#home img{
+  width: 26.4rem;/* mesmo tamanho da div em baixo*/
+  display: block;
+  /* object-position: 0 2rem; */
+  margin-inline: auto;
+}
+
+
+
+
+
+#home p{
+  font-size: 1.6rem;
+  line-height: 130%;
+  font-weight: 400;
+  color: var(--paragraph);
+  margin-bottom: 3.2rem;
+}
+
+#home button{
+  background: var(--primary-color);
+
+  border: none;
+  margin: 0 auto 6rem auto;
+  border-radius: 4rem;
+
+  height: 6.2rem;
+  width: 26.3rem;
+
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  
+ 
+}
+ 
+
+#home .box{
+  max-width: 32.7rem;
+  padding-block: 4rem;
+
+  margin-inline: auto;
+  background: var(--brand-beige);
+  border: 1px solid var(--brand-ligth);
+  border-radius: .6rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+}
+
+#home .box p{
+  margin: 0;
+  color: var(--primary-color);
+  line-height: 150%;
+  font-size: 1.6rem;
+  
+}
+
+#home .box h3{
+ color: var(--headline);
+ font-size: 4.8rem;
+ line-height: 130%;
+ margin-bottom: .4rem;
+}
+
+
+
+
+
+/* services================================ */
+
+#services header h2{
+  margin-bottom:  6rem;
+}
+
+#services  .cards{
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+#services  .card{
+  padding: 2.4rem;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--brand-ligth);
+  border-radius: .6rem;
+}
+
+#services .card h3{
+  margin-block: 1.5rem;
+}
+
+/* ABOUT */
+#about {
+  text-align: left;
+  background: var(--brand-beige);
+}
+
+#about header h2{
+  margin-bottom: 2.4rem ;
+}
+
+#about .content p{
+  margin-top: 2.4rem;
+  margin-bottom: 6rem;
 }
