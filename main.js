@@ -1,18 +1,30 @@
 
-const nav = document.querySelector('#navigation')
+window.addEventListener('scroll', onScroll)
 
 function onScroll(){
-  nav.classList.toggle('scroll', scrollY > 0 ) 
-/*   if(scrollY > 0){
-    navigation.classList.add('scroll')
+ showNav()
+ showBackToTopButton()
+}
 
-  }else{
-    navigation.classList.remove('scroll')
-  } */
+function showNav(){
+  const nav = document.querySelector('#navigation')
+  nav.classList.toggle('scroll', scrollY > 0 ) 
 }
 
 
-window.addEventListener('scroll', onScroll)
+function showBackToTopButton(){
+  const btn = document.querySelector('#backToTopButton')
+  btn.classList.toggle('show', scrollY > 1250 ) 
+}
+
+
+
+
+/* ================================================ */
+
+
+
+
 
 
 function openMenu(){
@@ -39,4 +51,6 @@ ScrollReveal({
 #about,
 #about header,
 #about .content`);
+
+
 
