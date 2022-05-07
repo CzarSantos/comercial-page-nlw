@@ -46,7 +46,7 @@ body{
 
 
 .wrapper{
-  width: 37.5rem;
+  width: min(50rem, 100%); /* se o display for mais de 50rem o tamanho vai ser 50rem, se for menor pega os 100% */
   margin-inline:auto;
   padding-inline: 2.4rem;
 }
@@ -169,7 +169,7 @@ nav{
   display: flex;
   
   height:var(--nav-height);
-  width: 100vw;
+  width: 100%;
   position: fixed;
   top: 0;
  
@@ -207,6 +207,10 @@ nav button{
   cursor: pointer;
 }
 
+nav .menu, nav .close-menu{
+  position: fixed;
+}
+
 /* MENU-expended================================ */
 
 
@@ -238,7 +242,6 @@ body.menu-expended .menu, body.menu-expended  .close-menu{
 }
 
 body.menu-expended .menu{
-  position: fixed;
   top: 0;
   left: 0;
   background: var(--primary-color);
@@ -362,7 +365,7 @@ body.menu-expended button path{
  
 
 #home .box{
-  max-width: 32.7rem;
+  width: 100%;
   padding-block: 4rem;
 
   margin-inline: auto;
@@ -520,3 +523,122 @@ footer .social-links{
   }
 
  
+
+/* Responsivo */
+
+  /* 1024 para cima */
+  @media (min-width: 1024px){
+
+    /*geral*/
+    .wrapper{
+      /* se a tela for maior que 1120px o width vai ser: 112rem - Se for menor será 100% */
+      width: min(112rem, 100%);
+    }
+    
+    /*navgation*/
+    nav#navigation .wrapper *{
+      margin: 0;
+      padding: 0;
+      visibility: initial;
+      display: initial;
+      opacity: initial;
+      flex-direction: initial;
+      position: initial;
+      font-size: initial;
+      transform: initial;
+      color: initial;
+      background: initial;
+
+    }
+
+    nav#navigation .close-menu, 
+    nav#navigation .open-menu,
+    nav#navigation .social-links{
+      display: none;
+
+    }
+
+    nav#navigation .menu{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 60%;
+    }
+
+    nav#navigation .menu ul:nth-child(1){
+      display: flex;
+      gap:3.2
+
+    }
+    nav#navigation .menu ul li a{
+      color: var(primay-color);
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    nav#navigation .menu a.button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 2.4rem;
+      
+      border: 1px solid var(--primary-color);
+      border-radius: 4rem;
+
+      color: var(--primary-color);
+      
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      
+    }
+
+    nav#navigation.scroll .menu ul li a{
+      color: var(--brand-beige);
+      opacity: 0.8;
+    }
+
+    nav#navigation.scroll .menu a.button{
+      border-color: #fff;
+      color: #fff;
+    }
+
+    nav#navigation .menu li a{
+      transition: opacity .4s;
+    }
+
+    nav#navigation .menu li a:hover{
+      opacity: 1;
+      font-weight: 700;
+
+
+    }
+    nav#navigation .menu li a::after{
+      content: '';
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      display: block;
+      position: relative;
+      bottom: -2rem;
+      left: -0.5rem;
+     
+     transition: width 0.2s;
+    }
+
+    nav#navigation.scroll .menu li a::after{
+      background: #fff;
+     
+    }
+
+    nav#navigation .menu li a:hover::after{
+      width: 100%;
+      padding-inline: 0.8rem;
+    }
+
+    nav#navigation.scroll .menu li a:hover{
+      opacity: 1;
+    }
+
+  }
