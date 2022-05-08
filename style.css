@@ -321,13 +321,14 @@ body.menu-expended button path{
 /* home================================ */
 
 #home{
+  padding-block: 0;
   padding-top: calc(4.1rem + var(--nav-height));
 }
 
 #home::before{
   content: "";
   width: 100%;
-  height: calc(95rem + var(--nav-height));
+  height: calc(76% + var(--nav-height));
   background: var(--primary-bg);
   display: block;
 
@@ -343,9 +344,9 @@ body.menu-expended button path{
 
 
 #home img{
-  width: 35.4rem;/* mesmo tamanho da div em baixo*/
+ width: 27.4rem; /* mesmo tamanho da div em baixo*/
   display: block;
-  /* object-position: 0 2rem; */
+  object-position: 0 4rem; 
   margin-inline: auto;
 }
 
@@ -529,10 +530,30 @@ footer .social-links{
   /* 1024 para cima */
   @media (min-width: 1024px){
 
+    body{
+      overflow: auto;/* n conta barra scroll */
+    }
     /*geral*/
     .wrapper{
       /* se a tela for maior que 1120px o width vai ser: 112rem - Se for menor será 100% */
       width: min(112rem, 100%);
+      display: grid;
+    }
+
+    .col-a{
+      grid-area: A;
+    }
+    .col-b{
+      grid-area: B;
+    }
+
+    section{
+      padding-block: 16rem;
+    }
+
+    section header h2{
+      font-size: 4rem;
+      line-height: 5.2rem;
     }
     
     /*navgation*/
@@ -548,6 +569,7 @@ footer .social-links{
       transform: initial;
       color: initial;
       background: initial;
+      filter: initial;
 
     }
 
@@ -594,6 +616,12 @@ footer .social-links{
       
     }
 
+    nav#navigation .menu a.button:hover{
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+
     nav#navigation.scroll .menu ul li a{
       color: var(--brand-beige);
       opacity: 0.8;
@@ -604,10 +632,12 @@ footer .social-links{
       color: #fff;
     }
 
+
     nav#navigation .menu li a{
       transition: opacity .4s;
     }
 
+    nav#navigation .menu li a.active, 
     nav#navigation .menu li a:hover{
       opacity: 1;
       font-weight: 700;
@@ -627,18 +657,153 @@ footer .social-links{
      transition: width 0.2s;
     }
 
-    nav#navigation.scroll .menu li a::after{
-      background: #fff;
-     
-    }
-
+    nav#navigation .menu li a.active::after,
     nav#navigation .menu li a:hover::after{
       width: 100%;
       padding-inline: 0.8rem;
     }
 
+    /* scroll */
+    nav#navigation.scroll .menu li a::after{
+      background: #fff;
+     
+    }
+
+
+
+    nav#navigation.scroll .menu li a.active,
     nav#navigation.scroll .menu li a:hover{
       opacity: 1;
     }
 
+    nav#navigation.scroll .menu a.button.active,
+    nav#navigation.scroll .menu a.button:hover{
+      background: var(--primary-color);
+      filter: brightness(1.1);
+      border: none;
+
+    }
+
+    /* home================ */
+    #home::before{
+      height: calc(96% - var(--nav-height));
+    }
+#home {
+  padding-top: var(--nav-height);
+}
+
+#home .wrapper{
+  grid-template-columns: 60.5rem 1fr;
+  grid-template-areas: 
+  'A B'
+  'C C';
+}
+
+#home .col-a{
+  text-align: left;
+  align-self: center;
+}
+
+#home .content p{
+  font-size: 1.8rem;
+}
+
+#home h1{
+  font-size: 4.2rem;
+}
+
+#home .box{
+  grid-area: C;
+  flex-direction: row;
+  padding: 6rem;
+  gap: 0;
+}
+
+
+/* pega apenas o item que anterior a ele tenha a classe */
+#home .box .item + .item{
+  border-left: 1px solid var(--primary-color);
+}
+
+#home .box .item{
+  flex: 1;/* preenche os epaços por igual */
+}
+
+#home .button{
+  margin: 0;
+}
+
+#home img{
+  width: 42rem;
+  
+}
+
+/* services========= */
+
+#services h2{
+  width: 47rem;
+  margin-inline: auto;
+}
+
+#services .cards{
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#services .card{
+  width: 30%;
+  flex-grow: 1;/* preenche o espaço igualmente */
+  gap: 4rem;
+}
+
+
+/* about============== */
+
+
+#about .wrapper{
+  grid-template-columns: 48rem 1fr;
+  grid-template-areas: 'B A';
+  gap: 6.7rem;
+}
+#about .col-a{
+  align-self: center;
+
+}
+#about .content p{
+  margin-bottom: 0;
+}
+
+
+/* COntact ================ */
+
+#contact .wrapper{
+  grid-template-columns: 1fr 57.5rem;
+  grid-template-areas: 'A B';
+}
+
+#contact h2{
+  width: 40.4rem;
+}
+
   }
+
+
+/*footer=================*/
+
+footer{
+  padding-block: 8rem;
+}
+
+footer .wrapper{
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'A B';
+}
+
+footer .col-a{
+  align-self: center;
+}
+
+footer .col-b{
+  align-self: center;
+  justify-self: flex-end;
+}
