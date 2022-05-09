@@ -14,6 +14,6 @@ Projeto de uma landing page comercial
 - Manipulação DOM
 - Biblioteca: ScrollReveal
 
-##Projeto👨‍💻
+### Projeto👨‍💻
 
 ![alt](./assets/screnn.png)
