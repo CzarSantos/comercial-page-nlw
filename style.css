@@ -438,8 +438,33 @@ body.menu-expended button path{
   margin-top: 2.4rem;
   margin-bottom: 6rem;
 }
+#about .col-b img{
+  border-radius: 5px;
+}
 
+  /* confia===================================*/
+#confia{
+  background: var(--primary-bg);
+}
+  #confia .content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  #confia .content svg{
+  align-self: center;
+}
 
+#confia .content 
+svg path{
+  fill:var(--brand-dark);
+}
+
+#confia .content svg path[fill*="white"]{
+  fill: #fff;
+}
 
 /* contact================================ */
 
@@ -462,6 +487,13 @@ body.menu-expended button path{
   display: flex;
   align-items: center;
   gap: .8rem;
+}
+
+#contact .col-b iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+ 
 }
 
 
@@ -525,7 +557,7 @@ footer .social-links{
 
  
 
-/* Responsivo */
+/* Responsivo ==================================================*/
 
   /* 1024 para cima */
   @media (min-width: 1024px){
@@ -777,15 +809,28 @@ footer .social-links{
 /* COntact ================ */
 
 #contact .wrapper{
-  grid-template-columns: 1fr 57.5rem;
+/*   grid-template-columns: 1fr 57.5rem; */
+grid-template-columns: 1fr 1fr;
   grid-template-areas: 'A B';
 }
+
 
 #contact h2{
   width: 40.4rem;
 }
 
+
+
+
+  /* confia===================================*/
+ 
+    #confia .content 
+  svg{
+    flex-grow: 1;
+    align-self: center;
+    gap: 0;
   }
+  
 
 
 /*footer=================*/
@@ -806,4 +851,7 @@ footer .col-a{
 footer .col-b{
   align-self: center;
   justify-self: flex-end;
+}
+
+
 }
